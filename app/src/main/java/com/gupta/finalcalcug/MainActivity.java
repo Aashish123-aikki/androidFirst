@@ -7,8 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import java.lang.Float;
+import java.lang.String;
 
 import static java.lang.Float.parseFloat;
+import static java.lang.String.valueOf;
+
 
 public class MainActivity extends AppCompatActivity {
     private Button one,two,three,four,five,six,seven,eight,nine,zero,dot,clear;
@@ -27,88 +31,86 @@ public class MainActivity extends AppCompatActivity {
         setupUIviews();
 
         
-        rate.setOnClickListener(new View.OnClickListener() {
+        rate.setOnClickListener((View v) -> {
+            rate.setText("");
+        zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-            zero.setOnClickListener(new View.OnClickListener() {
+                rate.setText(rate.getText().toString()+"0");
+            }
+        });
+            one.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    rate.setText(rate.getText().toString()+"0");
+                    rate.setText(rate.getText().toString()+"1");
                 }
             });
-                one.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        rate.setText(rate.getText().toString()+"1");
-                    }
-                });
-                two.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        rate.setText(rate.getText().toString()+"2");
-                    }
-                });
-                three.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        rate.setText(rate.getText().toString()+"3");
-                    }
-                });
-                four.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        rate.setText(rate.getText().toString()+"4");
-                    }
-                });
-                five.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        rate.setText(rate.getText().toString()+"5");
-                    }
-                });
-                six.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        rate.setText(rate.getText().toString()+"6");
-                    }
-                });
-                seven.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        rate.setText(rate.getText().toString()+"7");
-                    }
-                });
-                eight.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        rate.setText(rate.getText().toString()+"8");
-                    }
-                });
-                nine.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        rate.setText(rate.getText().toString()+"9");
-                    }
-                });
-                dot.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        rate.setText(rate.getText().toString()+".");
-                    }
-                });
-                clear.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        rate.setText("");
-                    }
-                });
-            }
+            two.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rate.setText(rate.getText().toString()+"2");
+                }
+            });
+            three.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rate.setText(rate.getText().toString()+"3");
+                }
+            });
+            four.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rate.setText(rate.getText().toString()+"4");
+                }
+            });
+            five.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rate.setText(rate.getText().toString()+"5");
+                }
+            });
+            six.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rate.setText(rate.getText().toString()+"6");
+                }
+            });
+            seven.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rate.setText(rate.getText().toString()+"7");
+                }
+            });
+            eight.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rate.setText(rate.getText().toString()+"8");
+                }
+            });
+            nine.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rate.setText(rate.getText().toString()+"9");
+                }
+            });
+            dot.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rate.setText(rate.getText().toString()+".");
+                }
+            });
+            clear.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    rate.setText("");
+                }
+            });
         });
         //money
         money.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                quantity.setEnabled(false);
+                money.setText("");
                 zero.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -154,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
                 seven.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        money.setText(money.getText().toString()+"7");
+                        money.setText(String.format("%s7", money.getText().toString()));
                     }
                 });
                 eight.setOnClickListener(new View.OnClickListener() {
@@ -187,7 +189,7 @@ public class MainActivity extends AppCompatActivity {
         quantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                money.setEnabled(false);
+                quantity.setText("");
                 zero.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
@@ -254,35 +256,32 @@ public class MainActivity extends AppCompatActivity {
                         quantity.setText(quantity.getText().toString()+".");
                     }
                 });
-                clear.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        quantity.setText("");
-                    }
-                });
+                clear.setOnClickListener(v1 -> quantity.setText(""));
             }
         });
-        a= parseFloat(String.valueOf(money.getText()));
-        b= parseFloat(String.valueOf(rate.getText()));
-        c= parseFloat(String.valueOf(quantity));
-        res1 = (a) * (1000 / b);
-        res2= (c)*(b/1000);
 
-        final String s = Float.toString(res1);                                   //converted res1 into string s
-        final String s2 = Float.toString(res2);                                 //converted res2 into string s2
+
 
         // assigning value of results.
-        equals.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                quantity.setText(s);
+    equals.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            a= Float.parseFloat(valueOf(money.getText()));
+            b= parseFloat(valueOf(rate.getText()));
+            res1 = (a) * (1000 / b);
+            final String s = Float.toString(res1);
+            quantity.setText(s);
             }
         });
 
-        equals2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                money.setText(s2);
+    equals2.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            b= parseFloat(valueOf(rate.getText()));
+            c= parseFloat(String.valueOf(quantity));
+            res2= (c)*(b/1000);
+            final String s2 = Float.toString(res2);
+            money.setText(s2);
             }
         });
 
@@ -290,10 +289,11 @@ public class MainActivity extends AppCompatActivity {
 
     }
     private void setupUIviews(){
+        zero=(Button)findViewById(R.id.btnzero);
         one= (Button)findViewById(R.id.btn1);
         two= (Button)findViewById(R.id.btn2);
         three= (Button)findViewById(R.id.btn3);
-        four= (Button)findViewById(R.id.btn4);
+        four= findViewById(R.id.btn4);
         five= (Button)findViewById(R.id.btn5);
         six= (Button)findViewById(R.id.btn6);
         seven= (Button)findViewById(R.id.btn7);
