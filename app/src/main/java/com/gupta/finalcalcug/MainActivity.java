@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
         
         rate.setOnClickListener((View v) -> {
             rate.setText("");
+
         zero.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -102,9 +103,12 @@ public class MainActivity extends AppCompatActivity {
             clear.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    rate.setText("");
+                    rate.setText("Rate per kg/litre");
                 }
             });
+
+
+
         });
         //money
         money.setOnClickListener(new View.OnClickListener() {
@@ -180,110 +184,117 @@ public class MainActivity extends AppCompatActivity {
                 clear.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        money.setText("");
+                        money.setText("money");
                     }
                 });
+
+                equals2.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        b= parseFloat(valueOf(rate.getText()));
+                        c= parseFloat(valueOf(quantity.getText()));
+                        res2= (c)*(b/1000);
+                        final String s2 = Float.toString(res2);
+                        money.setText(s2);
+                    }
+                });
+
             }
         });
         //quantity
         quantity.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                equals2.setEnabled(true);
                 quantity.setText("");
                 zero.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        quantity.setText(quantity.getText().toString()+"0");
+                        quantity.setText(quantity.getText().toString() + "0");
                     }
                 });
                 one.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        quantity.setText(quantity.getText().toString()+"1");
+                        quantity.setText(quantity.getText().toString() + "1");
                     }
                 });
                 two.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        quantity.setText(quantity.getText().toString()+"2");
+                        quantity.setText(quantity.getText().toString() + "2");
                     }
                 });
                 three.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        quantity.setText(quantity.getText().toString()+"3");
+                        quantity.setText(quantity.getText().toString() + "3");
                     }
                 });
                 four.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        quantity.setText(quantity.getText().toString()+"4");
+                        quantity.setText(quantity.getText().toString() + "4");
                     }
                 });
                 five.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        quantity.setText(quantity.getText().toString()+"5");
+                        quantity.setText(quantity.getText().toString() + "5");
                     }
                 });
                 six.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        quantity.setText(quantity.getText().toString()+"6");
+                        quantity.setText(quantity.getText().toString() + "6");
                     }
                 });
                 seven.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        quantity.setText(quantity.getText().toString()+"7");
+                        quantity.setText(quantity.getText().toString() + "7");
                     }
                 });
                 eight.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        quantity.setText(quantity.getText().toString()+"8");
+                        quantity.setText(quantity.getText().toString() + "8");
                     }
                 });
                 nine.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        quantity.setText(quantity.getText().toString()+"9");
+                        quantity.setText(quantity.getText().toString() + "9");
                     }
                 });
                 dot.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        quantity.setText(quantity.getText().toString()+".");
+                        quantity.setText(quantity.getText().toString() + ".");
                     }
                 });
-                clear.setOnClickListener(v1 -> quantity.setText(""));
+                clear.setOnClickListener(v1 -> quantity.setText("quantity"));
+
+                equals.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        a = Float.parseFloat(valueOf(money.getText()));
+                        b = parseFloat(valueOf(rate.getText()));
+                        res1 = (a) * (1000 / b);
+                        final String s = Float.toString(res1);
+                        quantity.setText(s);
+                    }
+                });
+
             }
         });
 
 
 
         // assigning value of results.
-    equals.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            a= Float.parseFloat(valueOf(money.getText()));
-            b= parseFloat(valueOf(rate.getText()));
-            res1 = (a) * (1000 / b);
-            final String s = Float.toString(res1);
-            quantity.setText(s);
-            }
-        });
 
-    equals2.setOnClickListener(new View.OnClickListener() {
-        @Override
-        public void onClick(View v) {
-            b= parseFloat(valueOf(rate.getText()));
-            c= parseFloat(String.valueOf(quantity));
-            res2= (c)*(b/1000);
-            final String s2 = Float.toString(res2);
-            money.setText(s2);
-            }
-        });
+
+
 
 
 
